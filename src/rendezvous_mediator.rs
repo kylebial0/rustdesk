@@ -30,7 +30,15 @@ use crate::{
     check_port,
     server::{check_zombie, new as new_server, ServerPtr},
 };
+lazy_static! {
+    pub static ref RENDEZVOUS_SERVER: String = option_env!("RENDEZVOUS_SERVER")
+        .unwrap_or("rust.digisitez.com")
+        .to_string();
 
+    pub static ref RS_PUB_KEY: String = option_env!("RS_PUB_KEY")
+        .unwrap_or("SBsIkQZKTeW1lYWDxAqvNNEt2N66t8PgGaTm3yFeA2A=")
+        .to_string();
+}
 type Message = RendezvousMessage;
 
 lazy_static::lazy_static! {
